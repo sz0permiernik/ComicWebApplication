@@ -1,0 +1,33 @@
+﻿@using ComicWebApplication.CreateViewModels
+@model CreateWorldViewModel
+
+<div class="col-md-6 offset-3 mt-5">
+    <div class="container mx-auto">
+        <div class="container mb-5">
+            <div class="flex rounded overflow-hidden shadow-md p-4 mt-5" style="background-color:rebeccapurple">
+                <h4 class="text-center mb-3">Dodawanie nowego świata</h4>
+                <form method="post" asp-action="Create" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="Name">Nazwa świata</label>
+                        <input asp-for="Name" class="form-control mb-2">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>            
+                    <div class="form-group">
+                        <label for="Description">Opis świata</label>
+                        <input asp-for="Description" class="form-control mb-2">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ImageURL">Zdjęcie świata</label>
+                        <input asp-for="ImageURL" type="file" class="form-control mb-2">
+                        <span asp-validation-for="ImageURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2 float-end">
+                        <button class="btn btn-primary" type="submit">Stwórz</button>
+                        <a class="btn btn-danger" asp-controller="Character" asp-action="Index">Anuluj</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "MOvies - ";
+}
+
+<div class="container mx-auto">
+    <div class="container mb-5">
+        <div class="flex rounded overflow-hidden shadow-md p-4 mt-5" style="background-color:rebeccapurple">
+            <div style="float: left; margin-right: 50px">
+                <img alt="Movie Image"
+                     height="400"
+                     src=@Model.ImageURL
+                     class="aspect-w-3 aspect-h-4 object-cover"
+                     width="300" />
+            </div>
+            <div>
+                <div class="dropdownSpace">
+                    <h1>@Model.Title</h1>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                        </button>
+                        <ul class="dropdown-menu text-center">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Movie" asp-action="Edit" asp-route-id="@Model.MovieID">Edytuj</a>
+                                <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Movie" asp-action="Delete" asp-route-id="@Model.MovieID">Usuń</a>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <h5 class="text font-bold text-white mt-lg-5 mb-3">Szczegóły filmu</h5>
+                <p class="text-white">Reżyser filmu: @Model.Director</p>
+                <p class="text-white">Opis filmu: @Model.Description</p>
+                <p class="text-white">Rok wydania filmu: @Model.ReleaseYear</p>
+            </div>
+        </div>
+    </div>
+</div>

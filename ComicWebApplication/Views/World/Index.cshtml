@@ -1,0 +1,40 @@
+﻿@model IEnumerable<World>
+@{
+    ViewData["Title"] = "Worlds - ";
+}
+
+<div class="container mx-auto" style="display: grid; align-content:space-between">
+    <div class="container mb-5 mt-3">
+        <form asp-controller="World" asp-action="Index" method="get">
+            <div class="float-end">
+                <input type="text" name="SearchString" />
+                <input type="submit" value="Szukaj" />
+            </div>
+        </form>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="World" asp-action="Create">+ Dodaj nowy świat</a>
+        }
+    </div>
+    <div class="container mb-5">
+        @foreach (var item in Model)
+        {
+            <div class="container mb-5">
+                <div class="flex rounded overflow-hidden shadow-md p-4" style="background-color:rebeccapurple">
+                    <div style="float: left; margin-right: 50px">
+                        <img alt="World Image"
+                             height="400"
+                             src=@item.ImageURL
+                             class="aspect-w-3 aspect-h-4 object-cover"
+                             width="300" />
+                    </div>
+                    <div>
+                        <a class="text-dark h1" asp-area="" asp-controller="World" asp-action="Detail" asp-route-id="@item.WorldID">@item.Name</a>
+                        <h5 class="text font-bold text-white mt-lg-5 mb-3">Szczegóły świata</h5>
+                        <p class="text-white">Opis świata: @item.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

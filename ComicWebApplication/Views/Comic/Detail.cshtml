@@ -1,0 +1,39 @@
+﻿@model Comic
+
+@{
+    ViewData["Title"] = "Comics - ";
+}
+
+<div class="container mx-auto">
+    <div class="container mb-5">
+        <div class="flex rounded overflow-hidden shadow-md p-4 mt-5" style="background-color:rebeccapurple">
+            <div style="float: left; margin-right: 50px">
+                <img alt="Character Image"
+                     height="400"
+                     src=@Model.ImageURL
+                     class="aspect-w-3 aspect-h-4 object-cover"
+                     width="300" />
+            </div>
+            <div>
+                <div class="dropdownSpace">
+                    <h1>@Model.Title</h1>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                        </button>
+                        <ul class="dropdown-menu text-center">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Comic" asp-action="Edit" asp-route-id="@Model.ComicID">Edytuj</a>
+                                <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Comic" asp-action="Delete" asp-route-id="@Model.ComicID">Usuń</a>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <h5 class="text font-bold text-white mt-lg-5 mb-3">Szczegóły komiksu</h5>
+                <p class="text-white">Numer wydania komiksu: @Model.Number</p>
+                <p class="text-white">Opis komiksu: @Model.Description</p>
+                <p class="text-white">Rok wydania komiksu: @Model.ReleaseYear</p>
+            </div>
+        </div>
+    </div>
+</div>

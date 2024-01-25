@@ -1,0 +1,42 @@
+﻿@using ComicWebApplication.EditViewModels
+@model EditMovieViewModel
+
+<div class="col-md-6 offset-3 mt-5">
+    <div class="container mx-auto">
+        <div class="container mb-5">
+            <div class="flex rounded overflow-hidden shadow-md p-4 mt-5" style="background-color:rebeccapurple">
+                <h4 class="text-center mb-3">Edytowanie filmu</h4>
+                <form method="post" asp-action="Edit" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="Title">Tytuł filmu</label>
+                        <input asp-for="Title" class="form-control">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Director">Reżyser filmu</label>
+                        <input asp-for="Director" class="form-control">
+                        <span asp-validation-for="Director" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Opis filmu</label>
+                        <input asp-for="Description" class="form-control">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ReleaseYear">Rok wydania filmu</label>
+                        <input asp-for="ReleaseYear" class="form-control">
+                        <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ImageURL">Zdjęcie okładki filmu</label>
+                        <input asp-for="ImageURL" type="file" class="form-control">
+                        <span asp-validation-for="ImageURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2 float-end">
+                        <button class="btn btn-primary" type="submit">Zatwierdź</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

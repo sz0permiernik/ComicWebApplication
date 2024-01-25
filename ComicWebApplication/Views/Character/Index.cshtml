@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Character>
+@{
+    ViewData["Title"] = "Characters - ";
+}
+
+<div class="container mx-auto" style="display: grid; align-content:space-between">
+    <div class="container mb-5 mt-3">
+        <form asp-controller="Character" asp-action="Index" method="get">
+            <div class="float-end">
+                <input type="text" name="SearchString" />
+                <input type="submit" value="Szukaj" />
+            </div>
+        </form>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Character" asp-action="Create">+ Dodaj nową postać</a>
+        }
+    </div>
+    <div class="container mb-5">
+        @foreach (var item in Model)
+        {
+        <div class="container mb-5" >
+            <div class="flex rounded overflow-hidden shadow-md p-4" style="background-color:rebeccapurple">
+                <div style="float: left; margin-right: 50px">
+                    <img alt="Character Image"
+                            height="400"
+                            src=@item.ImageURL
+                            class="aspect-w-3 aspect-h-4 object-cover"
+                            width="300" />
+                </div>
+                <div>
+                    <a class="text-white h1" asp-area="" asp-controller="Character" asp-action="Detail" asp-route-id="@item.CharacterID">@item.Name</a>
+                    <h5 class="text font-bold text-white mt-lg-5 mb-3">Szczegóły postaci</h5>
+                    <p class="text-white">Umiejętności: @item.Superpower</p>
+                    <p class="text-white">Opis postaci: @item.Description</p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Comic>
+@{
+    ViewData["Title"] = "Comics - ";
+}
+
+<div class="container mx-auto" style="display: grid; align-content:space-between">
+    <div class="container mb-5 mt-3">
+        <form asp-controller="Comic" asp-action="Index" method="get">
+            <div class="float-end">
+                <input type="text" name="SearchString" />
+                <input type="submit" value="Szukaj" />
+            </div>
+        </form>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Comic" asp-action="Create">+ Dodaj nowy komiks</a>
+        }
+    </div>
+    <div class="container mb-5">
+        @foreach (var item in Model)
+        {
+            <div class="container mb-5">
+                <div class="flex rounded overflow-hidden shadow-md p-4" style="background-color:rebeccapurple">
+                    <div style="float: left; margin-right: 50px">
+                        <img alt="Comic Image"
+                             height="400"
+                             src=@item.ImageURL
+                             class="aspect-w-3 aspect-h-4 object-cover"
+                             width="300" />
+                    </div>
+                    <div>
+                        <a class="text-dark h1" asp-area="" asp-controller="Comic" asp-action="Detail" asp-route-id="@item.ComicID">@item.Title</a>
+                        <h5 class="text font-bold text-white mt-lg-5 mb-3">Szczegóły komiksu</h5>
+                        <p class="text-white">Umiejętności: @item.Number</p>
+                        <p class="text-white">Opis postaci: @item.Description</p>
+                        <p class="text-white">Opis postaci: @item.ReleaseYear</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

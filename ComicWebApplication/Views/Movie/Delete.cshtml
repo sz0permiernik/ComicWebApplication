@@ -1,0 +1,16 @@
+﻿@model Movie
+
+<div class="col-md-6 offset-3 mt-5">
+    <div class="container mx-auto">
+        <div class="container mb-5">
+            <div class="flex rounded overflow-hidden shadow-md p-4 mt-5" style="background-color:rebeccapurple">
+                <h2 class="text-center mb-3">Czy chcesz usunąć film @Model.Title?</h2>
+                <form method="post" asp-action="Delete" enctype="multipart/form-data">
+                    <div class="form-group mt-5 float-md-end">
+                        <button class="btn btn-danger" type="submit">Zatwierdź</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

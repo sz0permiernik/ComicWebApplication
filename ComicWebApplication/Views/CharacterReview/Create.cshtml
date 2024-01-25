@@ -1,0 +1,28 @@
+﻿@model CharacterReview
+
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label for="CharacterID">CharacterID</label>
+        <input asp-for="CharacterID" class="form-control mb-2">
+        <span asp-validation-for="CharacterID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ReviewID">ReviewID</label>
+        <input asp-for="ReviewID" class="form-control mb-2">
+        <span asp-validation-for="ReviewID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Rating">Rating</label>
+        <input asp-for="Rating" class="form-control mb-2">
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Comment">Commeny</label>
+        <input asp-for="Comment" class="form-control mb-2">
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-2 float-end">
+        <button class="btn btn-primary" type="submit">Stwórz</button>
+        <a class="btn btn-danger" asp-controller="Character" asp-action="Index">Anuluj</a>
+    </div>
+</form>
